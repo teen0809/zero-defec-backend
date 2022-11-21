@@ -13,7 +13,7 @@ async function bootstrap() {
     .setDescription('Backend Api')
     .setVersion('1.0')
     .addBearerAuth()
-    .addServer(process.env.SWAGGER_SERVER_URL)
+    .addServer('/api/v1')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
