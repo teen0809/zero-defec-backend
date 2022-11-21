@@ -52,7 +52,8 @@ export class TaskController {
   @UseGuards(JwtAuthGuard)
   @Get()
   async getTasks(@Query('pagenumber') pagenumber: number, @Query('limit') limit: number) {
-    return this.taskService.getLimitedItems(limit, pagenumber);
+    return this.taskService.getAllItems();
+    // return this.taskService.getLimitedItems(limit, pagenumber);
   }
 
   @ApiBearerAuth()

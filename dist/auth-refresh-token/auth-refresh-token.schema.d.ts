@@ -24,7 +24,7 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { User } from '@src/user/user.schema';
 import { Document } from 'mongoose';
-export declare type UserRefreshTokenDocument = UserRefreshToken & Document;
+export type UserRefreshTokenDocument = UserRefreshToken & Document;
 export declare class UserRefreshToken {
     user: User;
     token: string;

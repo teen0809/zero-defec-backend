@@ -1,6 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { ApiResponseHelper } from '@src/common/helpers/api-response.helper';
-
 import { UserService } from './user.service';
 import { User } from './user.schema';
 import { CreateUserDto } from './dto/create-user.dto';

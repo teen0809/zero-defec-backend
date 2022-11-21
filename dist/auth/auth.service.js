@@ -22,9 +22,9 @@ let AuthService = class AuthService {
         this.authRefreshTokenService = authRefreshTokenService;
     }
     async login(user) {
-        const payload = { id: user.id, name: user.name, email: user.email };
+        const payload = { name: user.name, email: user.email, role: user.permission };
         const accessToken = this.jwtService.sign(payload);
-        const refreshToken = await this.createRefreshToken(user.id);
+        const refreshToken = await this.createRefreshToken(user.email);
         return {
             accessToken: accessToken,
             refreshToken: refreshToken,
@@ -33,7 +33,7 @@ let AuthService = class AuthService {
     async validateUser(email, password) {
         const user = await this.userService.findByEmail(email);
         if (user && (await bcrypt.compare(password, user.password))) {
-            return { id: user._id, name: user.name, email: user.email };
+            return { name: user.name, email: user.email, permission: user.permission };
         }
         return null;
     }

@@ -24,7 +24,7 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { User } from '@src/user/user.schema';
 import { Document } from 'mongoose';
-export declare type TaskDocument = Task & Document;
+export type TaskDocument = Task & Document;
 export declare class Task {
     title: string;
     description: string;

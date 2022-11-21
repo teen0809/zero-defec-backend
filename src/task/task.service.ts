@@ -30,6 +30,12 @@ export class TaskService {
     return task;
   }
 
+  async getAllItems() {
+    const tasks = this.taskModel.find().exec();
+
+    return tasks;
+  }
+
   async getLimitedItems(limit: number, pageNumber: number): Promise<any> {
     const tasks = this.taskModel
       .find()

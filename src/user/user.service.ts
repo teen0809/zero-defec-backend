@@ -19,8 +19,14 @@ export class UserService {
     return user.save();
   }
 
-  async findByEmail(email: string): Promise<any> {
+  async findByEmail(email: string): Promise<User> {
     const user = this.userModel.findOne({ email }).exec();
+
+    return user;
+  }
+
+  async findByEmailAndPermission(email: string, permission: number): Promise<User> {
+    const user = this.userModel.findOne({ email, permission }).exec();
 
     return user;
   }

@@ -31,6 +31,10 @@ let UserService = class UserService {
         const user = this.userModel.findOne({ email }).exec();
         return user;
     }
+    async findByEmailAndPermission(email, permission) {
+        const user = this.userModel.findOne({ email, permission }).exec();
+        return user;
+    }
     async findOneById(id) {
         return this.userModel.findById(id).exec();
     }

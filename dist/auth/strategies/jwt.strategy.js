@@ -24,7 +24,7 @@ let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(pas
         this.configService = configService;
     }
     async validate(payload) {
-        return { id: payload.id, name: payload.name, email: payload.email };
+        return { name: payload.name, email: payload.email, permission: payload.permission };
     }
 };
 JwtStrategy = __decorate([

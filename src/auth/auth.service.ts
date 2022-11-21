@@ -2,10 +2,10 @@ import * as bcrypt from 'bcrypt';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user/user.service';
-import { User } from '@sentry/types';
 import { AuthRefreshTokenService } from '@src/auth-refresh-token/auth-refresh-token.service';
 import { TokensResponseDto } from './dto/tokens-response.dto';
 import RefreshTokensDto from './dto/refresh-tokens.dto';
+import { User } from '@src/user/user.schema';
 
 @Injectable()
 export class AuthService {
@@ -16,9 +16,9 @@ export class AuthService {
   ) {}
 
   async login(user: Partial<User>): Promise<TokensResponseDto> {
-    const payload = { id: user.id, name: user.name, email: user.email };
+    const payload = { name: user.name, email: user.email, role: user.permission };
     const accessToken = this.jwtService.sign(payload);
-    const refreshToken = await this.createRefreshToken(user.id);
+    const refreshToken = await this.createRefreshToken(user.email);
 
     return {
       accessToken: accessToken,
@@ -26,10 +26,10 @@ export class AuthService {
     };
   }
 
-  async validateUser(email: string, password: string): Promise<Partial<any> | null> {
+  async validateUser(email: string, password: string): Promise<Partial<User> | null> {
     const user = await this.userService.findByEmail(email);
     if (user && (await bcrypt.compare(password, user.password))) {
-      return { id: user._id, name: user.name, email: user.email };
+      return { name: user.name, email: user.email, permission: user.permission };
     }
 
     return null;

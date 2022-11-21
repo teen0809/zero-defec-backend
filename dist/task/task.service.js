@@ -35,6 +35,10 @@ let TaskService = class TaskService {
         const task = this.taskModel.findOne({ id }).exec();
         return task;
     }
+    async getAllItems() {
+        const tasks = this.taskModel.find().exec();
+        return tasks;
+    }
     async getLimitedItems(limit, pageNumber) {
         const tasks = this.taskModel
             .find()

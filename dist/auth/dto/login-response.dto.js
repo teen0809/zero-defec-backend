@@ -15,11 +15,6 @@ const class_validator_1 = require("class-validator");
 class LoginResponseDto {
 }
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 1, required: true, description: 'User Id' }),
-    (0, class_validator_1.IsNumber)(),
-    __metadata("design:type", String)
-], LoginResponseDto.prototype, "id", void 0);
-__decorate([
     (0, swagger_1.ApiProperty)({
         example: 'John Doe',
         required: true,
@@ -37,5 +32,10 @@ __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], LoginResponseDto.prototype, "email", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 1, required: true, description: 'User role' }),
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
+], LoginResponseDto.prototype, "permission", void 0);
 exports.LoginResponseDto = LoginResponseDto;
 //# sourceMappingURL=login-response.dto.js.map

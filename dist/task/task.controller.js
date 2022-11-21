@@ -30,7 +30,7 @@ let TaskController = class TaskController {
         return this.taskService.create(file, body, req.user.id);
     }
     async getTasks(pagenumber, limit) {
-        return this.taskService.getLimitedItems(limit, pagenumber);
+        return this.taskService.getAllItems();
     }
     async update(_id, body) {
         return this.taskService.update(_id, body);

@@ -12,6 +12,9 @@ export declare class TaskService {
     constructor(s3: any, taskModel: Model<TaskDocument>, configService: ConfigService);
     create(file: Express.Multer.File, body: CreateTaskDto, user_id: string): Promise<Task>;
     findById(id: string): Promise<any>;
+    getAllItems(): Promise<(Task & import("mongoose").Document<any, any, any> & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
     getLimitedItems(limit: number, pageNumber: number): Promise<any>;
     update(_id: string, updateTaskDto: UpdateTaskDto): Promise<Task>;
     delete(id: string): Promise<boolean>;

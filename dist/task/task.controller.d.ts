@@ -7,7 +7,9 @@ export declare class TaskController {
     private readonly taskService;
     constructor(taskService: TaskService);
     create(req: any, body: CreateTaskDto, file: Express.Multer.File): Promise<Task>;
-    getTasks(pagenumber: number, limit: number): Promise<any>;
+    getTasks(pagenumber: number, limit: number): Promise<(Task & import("mongoose").Document<any, any, any> & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
     update(_id: string, body: UpdateTaskDto): Promise<Task>;
     delete(_id: string): Promise<boolean>;
 }

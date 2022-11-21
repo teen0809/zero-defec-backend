@@ -2,10 +2,6 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsString } from 'class-validator';
 
 export class LoginResponseDto {
-  @ApiProperty({ example: 1, required: true, description: 'User Id' })
-  @IsNumber()
-  id: string;
-
   @ApiProperty({
     example: 'John Doe',
     required: true,
@@ -21,4 +17,8 @@ export class LoginResponseDto {
   })
   @IsString()
   email: string;
+
+  @ApiProperty({ example: 1, required: true, description: 'User role' })
+  @IsNumber()
+  permission: number;
 }
